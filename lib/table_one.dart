@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -73,19 +72,19 @@ class _TableOneState extends State<TableOne> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RawMaterialButton(
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_back_ios,
                     color: Color(0xff323435),
                   ),
                   elevation: 5,
-                  constraints: BoxConstraints.tightFor(
+                  constraints: const BoxConstraints.tightFor(
                     width: 56.0,
                     height: 56.0,
                   ),
                   onPressed: () {},
-                  shape: CircleBorder(),
+                  shape: const CircleBorder(),
                 ),
-                Text(
+                const Text(
                   'Таблица 1',
                   style: TextStyle(
                       color: Color(0xff323435),
@@ -93,17 +92,17 @@ class _TableOneState extends State<TableOne> {
                       fontWeight: FontWeight.bold),
                 ),
                 RawMaterialButton(
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_forward_ios,
                     color: Color(0xff323435),
                   ),
                   elevation: 5,
-                  constraints: BoxConstraints.tightFor(
+                  constraints: const BoxConstraints.tightFor(
                     width: 56.0,
                     height: 56.0,
                   ),
                   onPressed: () {},
-                  shape: CircleBorder(),
+                  shape: const CircleBorder(),
                 ),
               ],
             ),
@@ -167,7 +166,7 @@ class _TableOneState extends State<TableOne> {
                     'srok_post': DateTime.parse(addedSrokPost),
                   });
                 },
-                child: Text('Добавить в БД')),
+                child: const Text('Добавить в БД')),
 
             // построение таблицы с данными из БД
 
@@ -200,21 +199,21 @@ class _TableOneState extends State<TableOne> {
                     final messageWidget = DataRow(selected: true, cells: [
                       DataCell(Text(
                         '${i + 1}',
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       )),
                       DataCell(Text('$nomer_dog',
-                          style: TextStyle(color: Colors.black))),
+                          style: const TextStyle(color: Colors.black))),
                       DataCell(Text('$formattedDate',
-                          style: TextStyle(color: Colors.black))),
+                          style: const TextStyle(color: Colors.black))),
                       DataCell(Text('$formattedSrok',
-                          style: TextStyle(color: Colors.black))),
-                      DataCell(
-                          Text('$cena', style: TextStyle(color: Colors.black))),
+                          style: const TextStyle(color: Colors.black))),
+                      DataCell(Text('$cena',
+                          style: const TextStyle(color: Colors.black))),
                       DataCell(Text('$kod_postav',
-                          style: TextStyle(color: Colors.black))),
+                          style: const TextStyle(color: Colors.black))),
                       DataCell(Text('$tip_prod',
-                          style: TextStyle(color: Colors.black))),
-                      DataCell(Text('УДАЛИТЬ'), onTap: () async {
+                          style: const TextStyle(color: Colors.black))),
+                      DataCell(const Text('УДАЛИТЬ'), onTap: () async {
                         await FirebaseFirestore.instance
                             .collection('tableone')
                             .doc(idOf)
@@ -229,21 +228,21 @@ class _TableOneState extends State<TableOne> {
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
                       columns: [
-                        DataColumn(label: Text('№')),
-                        DataColumn(
+                        const DataColumn(label: Text('№')),
+                        const DataColumn(
                           label: Text(
                             'Номер договора',
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
-                        DataColumn(
+                        const DataColumn(
                             label: Text('Дата',
                                 style: TextStyle(color: Colors.black))),
-                        DataColumn(
+                        const DataColumn(
                             label: Text('Срок поставки',
                                 style: TextStyle(color: Colors.black))),
                         DataColumn(
-                            label: Text('Цена',
+                            label: const Text('Цена',
                                 style: TextStyle(color: Colors.black)),
                             onSort: (columnIndex, ascending) {
                               setState(() {
@@ -256,19 +255,19 @@ class _TableOneState extends State<TableOne> {
                                 }
                               });
                             }),
-                        DataColumn(
+                        const DataColumn(
                             label: Text('Код Поставщика',
                                 style: TextStyle(color: Colors.black))),
-                        DataColumn(
+                        const DataColumn(
                             label: Text('Тип продукции',
                                 style: TextStyle(color: Colors.black))),
-                        DataColumn(label: Text('УДАЛИТЬ')),
+                        const DataColumn(label: Text('УДАЛИТЬ')),
                       ],
                       rows: messageWidgets,
                     ),
                   ));
                 } else {
-                  return Text('No dATA');
+                  return const Text('No dATA');
                 }
                 //,style: TextStyle(color: Colors.black),
               },
