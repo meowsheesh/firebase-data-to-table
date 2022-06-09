@@ -16,7 +16,7 @@ class ManagAPP extends StatelessWidget {
         platform: TargetPlatform.iOS,
         // primaryColor: Color(0xFF0A0E21),
         colorScheme: ColorScheme.light().copyWith(primary: Color(0xFF32B67A)),
-        scaffoldBackgroundColor: Color.fromARGB(255, 253, 174, 174),
+        scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
       ),
       initialRoute: TableOne.id,
       routes: {
