@@ -15,12 +15,13 @@ class ManagAPP extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         platform: TargetPlatform.iOS,
         // primaryColor: Color(0xFF0A0E21),
-        colorScheme: ColorScheme.light().copyWith(primary: Color(0xFF32B67A)),
-        scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
+        colorScheme: const ColorScheme.light()
+            .copyWith(primary: const Color(0xFF32B67A)),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       initialRoute: TableOne.id,
       routes: {
-        TableOne.id: (context) => TableOne(),
+        TableOne.id: (context) => const TableOne(),
       },
     );
   }
