@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -21,7 +20,6 @@ class TableOne extends StatefulWidget {
 class _TableOneState extends State<TableOne> {
   // подключение к бд и переменные
 
-  final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
 
   CollectionReference tableOne =
@@ -183,35 +181,35 @@ class _TableOneState extends State<TableOne> {
                   for (var message in messages!) {
                     final cena = message['cena'];
                     final dataTS = message['data'];
-                    final kod_postav = message['kod_postav'];
-                    final nomer_dog = message['nomer_dog'];
-                    final srok_postTS = message['srok_post'];
-                    final tip_prod = message['tip_prod'];
+                    final kodPostav = message['kod_postav'];
+                    final nomerDog = message['nomer_dog'];
+                    final srokPostTS = message['srok_post'];
+                    final tipProd = message['tip_prod'];
                     final idOf = snapshot.data?.docs[i].id;
 
                     DateTime data = dataTS.toDate();
-                    DateTime srok_post = srok_postTS.toDate();
+                    DateTime srokPost = srokPostTS.toDate();
                     String formattedDate =
                         DateFormat('yyyy-MM-dd').format(data);
                     String formattedSrok =
-                        DateFormat('yyyy-MM-dd').format(srok_post);
+                        DateFormat('yyyy-MM-dd').format(srokPost);
 
                     final messageWidget = DataRow(selected: true, cells: [
                       DataCell(Text(
                         '${i + 1}',
                         style: const TextStyle(color: Colors.black),
                       )),
-                      DataCell(Text('$nomer_dog',
+                      DataCell(Text('$nomerDog',
                           style: const TextStyle(color: Colors.black))),
-                      DataCell(Text('$formattedDate',
+                      DataCell(Text(formattedDate,
                           style: const TextStyle(color: Colors.black))),
-                      DataCell(Text('$formattedSrok',
+                      DataCell(Text(formattedSrok,
                           style: const TextStyle(color: Colors.black))),
                       DataCell(Text('$cena',
                           style: const TextStyle(color: Colors.black))),
-                      DataCell(Text('$kod_postav',
+                      DataCell(Text('$kodPostav',
                           style: const TextStyle(color: Colors.black))),
-                      DataCell(Text('$tip_prod',
+                      DataCell(Text('$tipProd',
                           style: const TextStyle(color: Colors.black))),
                       DataCell(const Text('УДАЛИТЬ'), onTap: () async {
                         await FirebaseFirestore.instance
