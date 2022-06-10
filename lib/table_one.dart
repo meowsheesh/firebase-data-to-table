@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-// константа стилей для Поля с заполнением
-
 const kTextField = InputDecoration(
   border: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
 );
@@ -18,8 +16,6 @@ class TableOne extends StatefulWidget {
 }
 
 class _TableOneState extends State<TableOne> {
-  // подключение к бд и переменные
-
   final _firestore = FirebaseFirestore.instance;
 
   CollectionReference tableOne =
@@ -35,11 +31,8 @@ class _TableOneState extends State<TableOne> {
   String addedKodPostav = '';
   String addedTipProd = '';
 
-  // функция для сортировки - смена фильтра получения данных с БД и сортировкой по цене
-
   void resetStreamWithNameFilter() {
     setState(() {
-      // return all products if your filter is empty
       if (filterValue == '') {
         filterStream = _firestore.collection('tableone').snapshots();
         return;
@@ -56,8 +49,6 @@ class _TableOneState extends State<TableOne> {
       }
     });
   }
-
-  // UI
 
   @override
   Widget build(BuildContext context) {
@@ -150,9 +141,6 @@ class _TableOneState extends State<TableOne> {
                 )),
               ],
             ),
-
-            // кнопка передаёт и переводит значения в int и timestamp и передаёт в БД
-
             ElevatedButton(
                 onPressed: () async {
                   await tableOne.add({
@@ -165,9 +153,6 @@ class _TableOneState extends State<TableOne> {
                   });
                 },
                 child: const Text('Добавить в БД')),
-
-            // построение таблицы с данными из БД
-
             StreamBuilder<QuerySnapshot>(
               stream: filterStream,
               builder: (context, snapshot) {
@@ -175,9 +160,6 @@ class _TableOneState extends State<TableOne> {
                   int i = 0;
                   final messages = snapshot.data?.docs;
                   List<DataRow> messageWidgets = [];
-
-                  // цикл для построения и вывода данных DataTable
-
                   for (var message in messages!) {
                     final cena = message['cena'];
                     final dataTS = message['data'];
@@ -267,7 +249,6 @@ class _TableOneState extends State<TableOne> {
                 } else {
                   return const Text('No dATA');
                 }
-                //,style: TextStyle(color: Colors.black),
               },
             )
           ],

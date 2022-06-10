@@ -16,7 +16,6 @@ class ManagAPP extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.light().copyWith(
         platform: TargetPlatform.iOS,
-        // primaryColor: Color(0xFF0A0E21),
         colorScheme: const ColorScheme.light()
             .copyWith(primary: const Color(0xFF32B67A)),
         scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
